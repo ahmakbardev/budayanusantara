@@ -21,17 +21,18 @@ jobs:
           key: ${{ secrets.SERVER_KEY }}
           port: ${{ secrets.SERVER_PORT }}
           script: |
-            cd /home/u376682195/domains/ahmakbar.site/
+            cd /home/u376682195/domains/budayanusantara.site/
             git clone https://github.com/ahmakbardev/budayanusantara.git
             chmod +x ~/bin/composer
             echo "export PATH=$HOME/bin:$PATH" >> ~/.bash_profile
             source ~/.bash_profile
             which composer
             composer --version
-            cd /home/u376682195/domains/ahmakbar.site/budayanusantara/
+            cd /home/u376682195/domains/bduayanusantara.site/budayanusantara/
             cp .env.example .env
             git pull origin develop
             composer update
             composer install
             php artisan key:generate
-            ln -s /home/u376682195/domains/ahmakbar.site/budayanusantara/public/* /home/u376682195/domains/ahmakbar.site/public_html/budaya
+            php artisan storage:link
+            ln -s /home/u376682195/domains/budayanusantara.site/budayanusantara/public/* /home/u376682195/domains/budayanusantara.site/public_html/

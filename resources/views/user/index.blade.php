@@ -121,7 +121,7 @@
                     @else
                         <!-- Jika status bukan draft, maka dapat diakses -->
                         <span class="py-1 px-2 bg-green-500 rounded-full text-xs font-semibold w-fit text-white">NEW</span>
-                        <img class="w-3/4 mx-auto" src="{{ asset('storage/' . $daerah->cover_image) }}" alt="">
+                        <img class="w-3/4 mx-auto min-h-48 max-h-48" src="{{ asset('storage/' . $daerah->cover_image) }}" alt="">
                         <p class="text-lg font-semibold">{{ $daerah->nama_daerah }}</p>
                         <a href="{{ route('flipbook', ['id' => $daerah->id]) }}"
                             class="text-center ring-1 py-2 rounded-md ring-sky-400 hover:ring-2 transition-all ease-in-out font-semibold text-sm">

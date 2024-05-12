@@ -147,7 +147,7 @@
                     <div
                         class="p-3 rounded-lg border shadow-md flex flex-col gap-2 relative overflow-hidden group hover:scale-95 hover:shadow-2xl transition-all ease-in-out">
                         <!-- Menggunakan gambar pertama dari data JSON -->
-                        <img class="w-3/4 mx-auto min-h-56 max-h-5min-h-56 object-contain"
+                        <img class="w-3/4 mx-auto min-h-56 max-h-56 object-contain"
                             src="{{ asset('storage/' . $firstData['gambar']) }}" alt="">
                         <!-- Menggunakan properti nama_quest -->
                         <p class="text-lg font-semibold">{{ $quest->nama_quest }}</p>

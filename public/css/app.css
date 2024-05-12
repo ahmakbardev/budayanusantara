@@ -765,6 +765,12 @@ video {
 .max-h-60 {
   max-height: 15rem;
 }
+.max-h-5 {
+  max-height: 1.25rem;
+}
+.max-h-56 {
+  max-height: 14rem;
+}
 .min-h-36 {
   min-height: 9rem;
 }

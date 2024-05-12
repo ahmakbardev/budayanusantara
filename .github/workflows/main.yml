@@ -21,7 +21,7 @@ jobs:
           key: ${{ secrets.SERVER_KEY }}
           port: ${{ secrets.SERVER_PORT }}
           script: |
-            cd /home/u376682195/domains/ahmakbar.site/budayanusantara/
+            cd /home/u376682195/domains/ahmakbar.site/
             git clone https://github.com/ahmakbardev/budayanusantara.git
             chmod +x ~/bin/composer
             echo "export PATH=$HOME/bin:$PATH" >> ~/.bash_profile

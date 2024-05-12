@@ -1,0 +1,247 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* flipbook */
+
+#flipbook {
+    overflow-x: hidden;
+    background: #2d6f75;
+}
+p {
+    margin-top: 10px;
+    font-size: 13px;
+    text-align: justify;
+}
+.container,
+.book-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container {
+    width: 100%;
+    /* height: 100vh; */
+    padding-block: 20px;
+}
+.book-content {
+    width: 85%;
+    min-width: 250px;
+    max-width: 800px;
+    height: 530px;
+    position: relative;
+    perspective: 2500px;
+    transition: 1s;
+}
+.book {
+    position: absolute;
+    width: 65%;
+    height: 100%;
+    transition: 1s;
+    transform-style: preserve-3d;
+    transform-origin: left;
+}
+.face-front,
+.face-back {
+    width: 100%;
+    height: 100%;
+    background: white;
+    padding: 15px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 20px;
+}
+.face-front {
+    /* box-shadow: inset 3px 0px 20px -7px black; */
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+.face-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateZ(-1px) rotateY(180deg);
+    /* box-shadow: inset -3px 1px 20px -7px black; */
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+#portada {
+    /* background: url("../img/bookPortada.jpg"); */
+    background-size: cover;
+}
+#portada-back {
+    /* background: url("../img/portadaBack.jpg"); */
+    background-size: cover;
+}
+
+/* Clases que se agregaran con Javascript */
+
+.trnsf {
+    transform: translateX(300px);
+}
+.trnsf-reset {
+    transform: translateX(0px);
+}
+
+/* @media para hacer el texto responsivo */
+
+@media screen and (max-width: 800px) {
+    p {
+        font-size: 12px;
+    }
+}
+
+/* quest */
+
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: "Montserrat", sans-serif;
+    background-color: #eee;
+    color: #111;
+}
+
+.score {
+    font-family: monospace;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: 0.25rem;
+    margin: 1rem;
+    position: relative;
+    transition: opacity 0.2s;
+}
+#play-again-btn {
+    position: absolute;
+    top: -0.5rem;
+    left: 50%;
+    margin-left: -50px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #111;
+    border: 5px double #fff;
+    border-radius: 14px;
+    padding: 8px 10px;
+    outline: none;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s, transform 0.5s, background-color 0.2s;
+}
+#play-again-btn:hover {
+    background-color: #333;
+}
+#play-again-btn:active {
+    background-color: #555;
+}
+#play-again-btn.play-again-btn-entrance {
+    opacity: 1;
+    transform: translateX(6rem);
+}
+.draggable-items {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 3px;
+    position: fixed;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* justify-content: center; */
+    margin: 1rem 1rem 1.5rem 1rem;
+    transition: opacity 0.5s;
+}
+.draggable {
+    height: 5rem;
+    width: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    font-weight: bold;
+    margin: 0rem 0.5rem;
+    cursor: move;
+    transition: opacity 0.2s;
+}
+.draggable:hover {
+    opacity: 0.5;
+}
+.matching-pairs {
+    transition: opacity 0.5s;
+}
+.matching-pair {
+    height: 6rem;
+    width: 80%;
+    margin: 1rem auto;
+    display: flex;
+    justify-content: space-between;
+}
+.matching-pair span {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    user-select: none;
+}
+.label {
+    width: 15rem;
+    /* font-size: 1.2rem; */
+}
+.droppable {
+    width: 6rem;
+    font-size: 4rem;
+    border-radius: 20px;
+    background-color: #fff;
+    border: 3px dashed #111;
+    transition: 0.2s;
+}
+.droppable-hover {
+    background-color: #bee3f0;
+    transform: scale(1.1);
+}
+.dropped {
+    border-style: solid;
+}
+.dragged {
+    user-select: none;
+    opacity: 0.1;
+    cursor: default;
+}
+.draggable.dragged:hover {
+    opacity: 0.1;
+}
+
+@media (max-width: 600px) {
+    html {
+        font-size: 14px;
+    }
+    #play-again-btn {
+        top: -0.4rem;
+    }
+    #play-again-btn.play-again-btn-entrance {
+        transform: translateX(7rem);
+    }
+}
+
+@keyframes slideInFromTop {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.custom-animation {
+    animation: slideInFromTop 0.5s ease forwards;
+}

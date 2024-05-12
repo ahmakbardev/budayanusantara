@@ -695,9 +695,6 @@ video {
 .mt-8 {
   margin-top: 2rem;
 }
-.ml-10 {
-  margin-left: 2.5rem;
-}
 .block {
   display: block;
 }
@@ -1715,15 +1712,18 @@ body {
 }
 .draggable-items {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 3px;
     position: fixed;
-    top: 60%;
-    left: 50%;
+    top: 30%;
+    left: 20%;
     transform: translate(-50%, -50%);
     /* justify-content: center; */
     margin: 1rem 1rem 1.5rem 1rem;
     transition: opacity 0.5s;
+    background-color: rgba(255, 255, 255, 0.775);
+    padding: 10px;
+    border-radius: 20px;
 }
 .draggable {
     height: 5rem;
@@ -1735,20 +1735,28 @@ body {
     font-weight: bold;
     margin: 0rem 0.5rem;
     cursor: move;
-    transition: opacity 0.2s;
+    transition: all 0.2s;
 }
 .draggable:hover {
-    opacity: 0.5;
+    opacity: 0.8;
+    border: 0.2px solid gray;
+    padding: 2px;
+    border-radius: 20px;
 }
 .matching-pairs {
     transition: opacity 0.5s;
+    margin-top: 200px;
 }
 .matching-pair {
     height: 6rem;
     width: 80%;
-    margin: 1rem auto;
+    margin: 3rem auto;
     display: flex;
     justify-content: space-between;
+}
+.matching-pair #text-clue {
+    width: 80%;
+    text-align: start;
 }
 .matching-pair span {
     height: 100%;
@@ -1765,12 +1773,26 @@ body {
     /* font-size: 1.2rem; */
 }
 .droppable {
+    position: relative;
     width: 6rem;
     font-size: 4rem;
     border-radius: 20px;
-    background-color: #fff;
+    background-position: top;
+    background-size: cover;
     border: 3px dashed #111;
     transition: 0.2s;
+    overflow: hidden;
+}
+
+.droppable::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5); /* Ubah nilai opacity sesuai kebutuhan */
+    /* border-radius: 20px; */
 }
 .droppable-hover {
     background-color: #bee3f0;
@@ -2284,16 +2306,12 @@ body {
     width: 50%;
   }
 
-  .md\:w-40 {
-    width: 10rem;
-  }
-
-  .md\:w-20 {
-    width: 5rem;
-  }
-
   .md\:w-10 {
     width: 2.5rem;
+  }
+
+  .md\:w-40 {
+    width: 10rem;
   }
 
   .md\:basis-1\/2 {
@@ -2431,3 +2449,4 @@ body {
     color: rgb(255 255 255 / var(--tw-text-opacity));
   }
 }
+

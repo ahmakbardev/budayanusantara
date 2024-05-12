@@ -1,4 +1,4 @@
-name: Deploy Laravel to Hpanel
+name: Update Budaya Nusantara to Hpanel
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    name: Deploy Budaya Nusantara to Hpanel
+    name: Deploy to Hpanel
 
     steps:
       - name: Checkout code
@@ -21,18 +21,18 @@ jobs:
           key: ${{ secrets.SERVER_KEY }}
           port: ${{ secrets.SERVER_PORT }}
           script: |
-            cd /home/u376682195/domains/budayanusantara.site/
-            git clone https://github.com/ahmakbardev/budayanusantara.git
             chmod +x ~/bin/composer
             echo "export PATH=$HOME/bin:$PATH" >> ~/.bash_profile
             source ~/.bash_profile
             which composer
             composer --version
             cd /home/u376682195/domains/budayanusantara.site/budayanusantara/
-            cp .env.example .env
+            git stash
             git pull origin develop
             composer update
-            composer install
-            php artisan key:generate
+            php artisan queue:restart
+            php artisan cache:clear
+            php artisan route:clear
+            php artisan config:clear
+            php artisan view:clear
             php artisan storage:link
-            ln -s /home/u376682195/domains/budayanusantara.site/budayanusantara/public/* /home/u376682195/domains/budayanusantara.site/public_html/

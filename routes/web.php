@@ -61,8 +61,21 @@ Route::middleware(['auth', 'SudahLogin'])->group(function () {
     });
 
     Route::get('/quest1/{id}', function ($id) {
-        $quest = Quest1::findOrFail($id); // Mengambil quest berdasarkan ID
-        return view('quest1', compact('quest'));
+        // Mengambil data quest berdasarkan ID
+        $quest = Quest1::findOrFail($id);
+
+        // Menghitung jumlah item dalam kolom 'data'
+        $totalDraggableItems = count(json_decode($quest->data));
+
+        // Mengambil semua quest dari database
+        $quests = Quest1::all();
+
+        // Menghitung jumlah total item dalam 'data' dari semua quest
+        $totalMatchingPairs = $quests->sum(function ($quest) {
+            return count(json_decode($quest->data));
+        });
+
+        return view('quest1', compact('quest', 'totalDraggableItems', 'totalMatchingPairs'));
     })->name('quest_detail');
     Route::post('/questselesai', [QuestSelesaiController::class, 'store'])->name('questselesai.store');
 

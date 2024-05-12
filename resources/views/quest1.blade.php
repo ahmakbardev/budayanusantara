@@ -26,8 +26,8 @@
     <script>
         let correct = 0;
         let total = 0;
-        const totalDraggableItems = 5;
-        let totalMatchingPairs = 5; // Should be <= totalDraggableItems
+        let totalDraggableItems = {{ $totalDraggableItems }};
+        let totalMatchingPairs = {{ $totalMatchingPairs }};
 
         const scoreSection = document.querySelector(".score");
         const correctSpan = scoreSection.querySelector(".correct");
@@ -63,15 +63,16 @@
             // Menambahkan elemen "draggable-items" ke DOM
             for (let i = 0; i < randomDraggableBrands.length; i++) {
                 draggableItems.insertAdjacentHTML("beforeend",
-                    `<img class="draggable" draggable="true" src="{{ asset('storage') }}/${randomDraggableBrands[i].gambar}" id="${randomDraggableBrands[i].nama}">`
+                    `<img class="draggable" draggable="true" style="background-color: white !important; background-size: cover;" src="{{ asset('storage') }}/${randomDraggableBrands[i].gambar}" id="${randomDraggableBrands[i].nama}">`
                 );
             }
 
             // Menambahkan elemen "matching-pairs" ke DOM
             for (let i = 0; i < alphabeticallySortedRandomDroppableBrands.length; i++) {
                 matchingPairs.insertAdjacentHTML("beforeend",
-                    `<div class="matching-pair"><span class="label text-start text-xl">${alphabeticallySortedRandomDroppableBrands[i].clue}</span><span class="droppable" data-brand="${alphabeticallySortedRandomDroppableBrands[i].nama}"></span></div>`
+                    `<div class="matching-pair"><span id="text-clue" class="label text-start text-lg">${alphabeticallySortedRandomDroppableBrands[i].clue}</span><span class="droppable" data-brand="${alphabeticallySortedRandomDroppableBrands[i].nama}" style="background-image: url('{{ asset('storage') }}/${alphabeticallySortedRandomDroppableBrands[i].background}')"></span></div>`
                 );
+
             }
 
             // Menambahkan kelas droppable ke semua elemen droppable

@@ -31,6 +31,7 @@ jobs:
             cd /home/u376682195/domains/ahmakbar.site/budayanusantara/
             cp .env.example .env
             git pull origin develop
+            composer update
             composer install
             php artisan key:generate
             ln -s /home/u376682195/domains/ahmakbar.site/budayanusantara/public /home/u376682195/domains/ahmakbar.site/public_html/budaya

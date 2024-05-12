@@ -28,7 +28,7 @@ jobs:
             source ~/.bash_profile
             which composer
             composer --version
-            cd /home/u376682195/domains/bduayanusantara.site/budayanusantara/
+            cd /home/u376682195/domains/budayanusantara.site/budayanusantara/
             cp .env.example .env
             git pull origin develop
             composer update

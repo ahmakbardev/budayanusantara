@@ -44,6 +44,14 @@ class LoginController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|unique:users|max:255',
             'password' => 'required|string|min:8|confirmed',
+        ], [
+            'name.required' => 'Nama harus diisi.',
+            'email.required' => 'Email harus diisi.',
+            'email.email' => 'Format email tidak valid.',
+            'email.unique' => 'Email sudah digunakan.',
+            'password.required' => 'Password harus diisi.',
+            'password.min' => 'Password minimal terdiri dari :min karakter.',
+            'password.confirmed' => 'Konfirmasi password tidak cocok.'
         ]);
 
         // Simpan data pengguna ke dalam database
@@ -59,6 +67,7 @@ class LoginController extends Controller
         // Redirect ke halaman sesuai kebutuhan setelah registrasi
         return redirect('/');
     }
+
 
     public function logout(Request $request)
     {

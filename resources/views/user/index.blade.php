@@ -2,14 +2,21 @@
 
 @section('content')
     <div class="flex flex-col max-sm:text-center gap-3 py-10 px-5 md:px-20 items-center">
-        <div class="grid grid-cols-5 gap-5 w-full">
-            <div class="p-3 rounded-md bg-white" style="">
-                <canvas id="flipbookChart" width="100" height="100"></canvas>
+        <h1 class="text-2xl lg:text-5xl font-bold">Proses Pembelajaran kamu</h1>
+        <div class="grid grid-cols-4 gap-5 w-full mb-10">
+            <div class="flex flex-col">
+                <h1 class="text-2xl">Flipbook</h1>
+                <div class="p-3 rounded-md bg-white" style="">
+                    <canvas id="flipbookChart" width="100" height="100"></canvas>
+                </div>
+            </div>
+            <div class="flex flex-col">
+                <h1 class="text-2xl">Challenge</h1>
+                <div class="p-3 rounded-md bg-white" style="">
+                    <canvas id="questChart" width="100" height="100"></canvas>
+                </div>
             </div>
 
-            <div class="p-3 rounded-md bg-white" style="">
-                <canvas id="questChart" width="100" height="100"></canvas>
-            </div>
 
             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
             <script>
@@ -102,7 +109,7 @@
         <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
             @foreach ($daerahs as $daerah)
                 <div
-                    class="p-3 rounded-lg border shadow-md flex flex-col gap-2 relative overflow-hidden group hover:scale-95 hover:shadow-2xl transition-all ease-in-out">
+                    class="p-3 rounded-lg bg-white border shadow-md flex flex-col gap-2 relative overflow-hidden group hover:scale-95 hover:shadow-2xl transition-all ease-in-out">
                     @if ($daerah->status === 'draft')
                         <!-- Status draft menunjukkan "Coming Soon" dan mencegah interaksi -->
                         <span
@@ -121,7 +128,8 @@
                     @else
                         <!-- Jika status bukan draft, maka dapat diakses -->
                         <span class="py-1 px-2 bg-green-500 rounded-full text-xs font-semibold w-fit text-white">NEW</span>
-                        <img class="w-3/4 mx-auto min-h-48 max-h-48" src="{{ asset('storage/' . $daerah->cover_image) }}" alt="">
+                        <img class="w-3/4 mx-auto min-h-48 max-h-48" src="{{ asset('storage/' . $daerah->cover_image) }}"
+                            alt="">
                         <p class="text-lg font-semibold">{{ $daerah->nama_daerah }}</p>
                         <a href="{{ route('flipbook', ['id' => $daerah->id]) }}"
                             class="text-center ring-1 py-2 rounded-md ring-sky-400 hover:ring-2 transition-all ease-in-out font-semibold text-sm">
@@ -145,7 +153,7 @@
                 @endphp
                 @if ($firstData)
                     <div
-                        class="p-3 rounded-lg border shadow-md flex flex-col gap-2 relative overflow-hidden group hover:scale-95 hover:shadow-2xl transition-all ease-in-out">
+                        class="p-3 rounded-lg bg-white border shadow-md flex flex-col gap-2 relative overflow-hidden group hover:scale-95 hover:shadow-2xl transition-all ease-in-out">
                         <!-- Menggunakan gambar pertama dari data JSON -->
                         <img class="w-3/4 mx-auto min-h-56 max-h-56 object-contain"
                             src="{{ asset('storage/' . $firstData['gambar']) }}" alt="">

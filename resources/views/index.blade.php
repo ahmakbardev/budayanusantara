@@ -7,7 +7,7 @@
             <p class="text-base text-start lg:text-lg">Selamat Datang di BudayaNusantara, Mari Menjelajahi Kekayaan Budaya
                 Indonesia. Mulai
                 Petualangan Pendidikan Anda di BudayaNusantara!</p>
-            <button
+            <a href="{{ route('login.form') }}"
                 class="text-white mt-5 bg-[#EA580C] hover:ring-[#EA580C] hover:bg-transparent hover:ring-1 hover:text-[#EA580C] transition-all ease-in-out text-lg py-3 px-10 rounded-md w-fit">Belajar
                 Sekarang</button>
         </div>

@@ -9,7 +9,7 @@
                 Petualangan Pendidikan Anda di BudayaNusantara!</p>
             <a href="{{ route('login.form') }}"
                 class="text-white mt-5 bg-[#EA580C] hover:ring-[#EA580C] hover:bg-transparent hover:ring-1 hover:text-[#EA580C] transition-all ease-in-out text-lg py-3 px-10 rounded-md w-fit">Belajar
-                Sekarang</button>
+                Sekarang!</a>
         </div>
         <div class="sm:basis-1/2 md:basis-1/2 xl:basis-2/5 relative max-sm:order-1">
             <img class="z-10 relative" src="{{ asset('assets/images/banner/head-1.png') }}" alt="">
